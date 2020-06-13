@@ -19,10 +19,10 @@ pipeline {
         stage('Deploy') {
           steps {
             withAWS(credentials: 'Jenkins S3', region: 'us-east-1') {
-              s3Delete bucket: 'trainingbucket3', path: '**/*'
-              s3Upload acl: 'Private', bucket: 'trainingbucket3', file: 'NewGitLab.zip', workingDir: '../'
-              s3Delete bucket: 'trainingbucket3', path: 'NewGitLab.zip'
-              s3Upload bucket: 'trainingbucket3', file: '../NewGitLab.zip'
+              s3Delete bucket: 's3cloudversioning', path: '**/*'
+              s3Upload acl: 'Private', bucket: 's3cloudversioning', file: 'NewGitLab.zip', workingDir: '../'
+              s3Delete bucket: 's3cloudversioning', path: 'NewGitLab.zip'
+              s3Upload bucket: 's3cloudversioning', file: '../NewGitLab.zip'
             }
           }
         }
